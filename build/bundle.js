@@ -489,9 +489,9 @@
 
 	        document.addEventListener('keydown', function (event) {
 	            switch (event.keyCode) {
-	                case _settings.KEYS.spacebar:
-	                    _this.space();
-	                    pause;
+	                case _settings.KEYS.spaceBar:
+	                    _this.pause = !_this.pause;
+	                    break;
 
 	            }
 	        });
@@ -504,6 +504,10 @@
 	    _createClass(Game, [{
 	        key: 'render',
 	        value: function render() {
+
+	            if (this.pause) {
+	                return;
+	            }
 
 	            this.gameElement.innerHTML = '';
 
