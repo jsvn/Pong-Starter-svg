@@ -468,6 +468,8 @@
 
 	var Game = function () {
 	    function Game(element, width, height) {
+	        var _this = this;
+
 	        _classCallCheck(this, Game);
 
 	        this.element = element;
@@ -478,13 +480,26 @@
 	        this.boardGap = 10;
 	        this.paddleWidth = 8;
 	        this.paddleHeight = 56;
+	        this.pause = false;
 
 	        this.paddle1 = new _Paddle2.default(this.height, this.paddleWidth, this.paddleHeight, this.boardGap, (this.height - this.paddleHeight) / 2, _settings.KEYS.a, _settings.KEYS.z);
 
 	        this.paddle2 = new _Paddle2.default(this.height, this.paddleWidth, this.paddleHeight, this.width - this.boardGap - this.paddleWidth, (this.height - this.paddleHeight) / 2, _settings.KEYS.up, _settings.KEYS.down);
 	        this.ball = new _Ball2.default(8, this.width, this.height);
+
+	        document.addEventListener('keydown', function (event) {
+	            switch (event.keyCode) {
+	                case _settings.KEYS.spacebar:
+	                    _this.space();
+	                    pause;
+
+	            }
+	        });
 	        //id of a thing we want to append this game to and width and height is the size of vp and vb of our game
 	    }
+	    // space() {
+	    //   this.space = Math.max(0, this.y-this.);
+	    // }
 
 	    _createClass(Game, [{
 	        key: 'render',
@@ -688,7 +703,11 @@
 	            var hitTop = this.y - this.radius <= 0;
 	            var hitBottom = this.y + this.radius >= this.boardHeight;
 
-	            if (hitLeft || hitRight) {} else if (hitTop || hitBottom) {}
+	            if (hitLeft || hitRight) {
+	                this.vx = -this.vx;
+	            } else if (hitTop || hitBottom) {
+	                this.vy = -this.vy;
+	            }
 	        }
 	    }, {
 	        key: 'reset',
@@ -707,8 +726,11 @@
 	    }, {
 	        key: 'render',
 	        value: function render(svg) {
+
 	            this.x += this.vx;
 	            this.y += this.vy;
+
+	            this.wallCollision();
 
 	            var ball = document.createElementNS(_settings.SVG_NS, 'circle');
 	            ball.setAttributeNS(null, 'cx', this.x);

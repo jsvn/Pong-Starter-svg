@@ -1,7 +1,4 @@
-import {
-    SVG_NS,
-    KEYS
-} from '../settings';
+import {SVG_NS,KEYS} from '../settings';
 
 import Board from './Board';
 import Paddle from './Paddle';
@@ -48,8 +45,8 @@ export default class Game {
         document.addEventListener('keydown', event => {
             switch (event.keyCode) {
                 case KEYS.spacebar:
-                    this.space();
-                    pause;
+                    this.pause =!this.pause;
+										break;
 
             }
         });
@@ -60,6 +57,10 @@ export default class Game {
 		// }
 
     render() {
+
+				if(this.pause) {
+					return;
+				}
 
         this.gameElement.innerHTML = '';
 
