@@ -9,4 +9,4 @@ const game = new Game('game', 512, 256);
     requestAnimationFrame(gameLoop);
 })();
 
-// iffy - immediately call that function again
+// iffy - immediately call that function

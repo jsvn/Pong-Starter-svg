@@ -13,6 +13,7 @@
     "no-empty": 1,
     "quotes": [ 1, "single" ],
     "no-mixed-spaces-and-tabs": 1
+    "no-unused-vars": 1
   },
   "env": {
     "browser": true

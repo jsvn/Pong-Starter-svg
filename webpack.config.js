@@ -11,10 +11,10 @@ const PATHS = {
 
 module.exports = {
 	entry: {
-		src: './src/index.js'
+		src: __dirname + '/src/index.js'
 	},
 	output: {
-		path: __dirname,
+		//path: __dirname,
 		filename: 'build/bundle.js'
 	},
 	module: {
@@ -25,7 +25,7 @@ module.exports = {
 				include: PATHS.src
 			}, {
 				test: /\.js$/,
-				loaders: ['babel', 'eslint'],
+				loaders: ['babel'],
 				include: PATHS.src,
 				exclude: /node_modules/
 			}, {
