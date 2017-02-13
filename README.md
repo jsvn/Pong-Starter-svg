@@ -1,6 +1,6 @@
 # Pong Game
 
-A basic pong game using SVGs.
+A basic pong game using SVGs, Javascript ES6 syntax and Webpack as a build tool in relation to game coding.
 
 ![A Pong Board](pong.png)
 
