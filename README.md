@@ -2,6 +2,8 @@
 
 A basic pong game using SVGs.
 
+![A Pong Board](pong.png)
+
 ## Setup
 
 **Install:**
@@ -21,3 +23,14 @@ A basic pong game using SVGs.
 **Player 2:**
 * ▲ : up
 * ▼: down
+
+
+**Pause:**
+* spacebar: pause game
+
+## Technology Used
+* ATOM Text editor
+* HTML5 Audio sounds triggered on ball bounces
+* SVGs to render the pong game
+* ES2015
+* Webpack as a build tool

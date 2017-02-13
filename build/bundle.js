@@ -716,6 +716,8 @@
 	        this.boardHeight = boardHeight;
 	        this.direction = 1;
 	        this.reset();
+
+	        this.ping = new Audio('public/sounds/pong-01.wav');
 	    }
 
 	    _createClass(Ball, [{
@@ -757,11 +759,10 @@
 	                    topY = _paddle[2],
 	                    bottomY = _paddle[3];
 
-	                console.log(rightX);
-
 	                if (this.x + this.radius >= leftX && this.x + this.radius <= rightX && this.y >= topY && this.y <= bottomY) {
 
 	                    this.vx = -this.vx;
+	                    this.ping.play();
 	                }
 	            } else {
 	                var _paddle2 = paddle1.coordinates(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
@@ -772,9 +773,10 @@
 	                    _topY = _paddle3[2],
 	                    _bottomY = _paddle3[3];
 
-	                if (this.x - this.radius <= _rightX && this.x + this.radius <= _leftX && this.y >= _topY && this.y <= _bottomY) {
+	                if (this.x - this.radius <= _rightX && this.x + this.radius >= _leftX && this.y >= _topY && this.y <= _bottomY) {
 
 	                    this.vx = -this.vx;
+	                    this.ping.play();
 	                }
 	            }
 	        }
