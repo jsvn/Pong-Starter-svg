@@ -4,6 +4,7 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
+import Ball2 from './Ball2';
 
 export default class Game {
 
@@ -48,12 +49,22 @@ export default class Game {
         this.score2 = new Score(
         this.width/ 2+50, 30, 30);
 
+        this.ball2 = new Ball(
+          8,
+          this.width,
+          this.height,
+          'lightblue'
+        );
+
 
         document.addEventListener('keydown', event => {
             switch (event.keyCode) {
                 case KEYS.spaceBar:
                     this.pause =!this.pause;
 										break;
+                    case KEYS.v:
+					this.ball2 = new Ball(BALL.radius, this.width, this.height, 'lightblue');
+					break;
             }
         });
         //id of a thing we want to append this game to and width and height is the size of vp and vb of our game
@@ -82,6 +93,7 @@ export default class Game {
         this.ball.render(svg, this.paddle1, this.paddle2);
         this.score1.render(svg, this.paddle1.score);
         this.score2.render(svg, this.paddle2.score);
+        this.ball2.render(svg, this.paddle1, this.paddle2);
 
     }
 

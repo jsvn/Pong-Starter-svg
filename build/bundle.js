@@ -466,6 +466,10 @@
 
 	var _Score2 = _interopRequireDefault(_Score);
 
+	var _Ball3 = __webpack_require__(15);
+
+	var _Ball4 = _interopRequireDefault(_Ball3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -494,10 +498,15 @@
 
 	        this.score2 = new _Score2.default(this.width / 2 + 50, 30, 30);
 
+	        this.ball2 = new _Ball2.default(8, this.width, this.height, 'lightblue');
+
 	        document.addEventListener('keydown', function (event) {
 	            switch (event.keyCode) {
 	                case _settings.KEYS.spaceBar:
 	                    _this.pause = !_this.pause;
+	                    break;
+	                case _settings.KEYS.v:
+	                    _this.ball2 = new _Ball2.default(BALL.radius, _this.width, _this.height, 'lightblue');
 	                    break;
 	            }
 	        });
@@ -529,6 +538,7 @@
 	            this.ball.render(svg, this.paddle1, this.paddle2);
 	            this.score1.render(svg, this.paddle1.score);
 	            this.score2.render(svg, this.paddle2.score);
+	            this.ball2.render(svg, this.paddle1, this.paddle2);
 	        }
 	    }]);
 
@@ -867,6 +877,72 @@
 	}();
 
 	exports.default = Score;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _settings = __webpack_require__(10);
+
+	var _Paddle = __webpack_require__(12);
+
+	var _Paddle2 = _interopRequireDefault(_Paddle);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Ball2 = function () {
+	  function Ball2(radius, boardWidth, boardHeight) {
+	    _classCallCheck(this, Ball2);
+
+	    this.radius = radius;
+	    this.boardWidth = boardWidth;
+	    this.boardHeight = boardHeight;
+	    this.direction = 1;
+
+	    this.ball2();
+	  }
+
+	  _createClass(Ball2, [{
+	    key: 'ball2',
+	    value: function ball2() {
+	      this.x = 10;
+	      this.y = this.boardHeight / 2;
+	      this.y = _Paddle2.default.y + _Paddle2.default.height / 2;
+
+	      this.vy = 0;
+	      this.vx = this.direction * (6 - Math.abs(this.vy));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render(svg) {
+	      this.x += this.vx;
+	      this.y += this.vy;
+
+	      var circle = document.createElementNS(_settings.SVG_NS, 'circle');
+	      circle.setAttributeNS(null, 'r', this.radius);
+	      circle.setAttributeNS(null, 'stroke', 'yellow');
+	      circle.setAttributeNS(null, 'fill', 'red');
+	      circle.setAttributeNS(null, 'cx', this.x);
+	      circle.setAttributeNS(null, 'cy', this.y);
+
+	      svg.appendChild(circle);
+	    }
+	  }]);
+
+	  return Ball2;
+	}();
+
+	exports.default = Ball2;
 
 /***/ }
 /******/ ]);
