@@ -1,4 +1,7 @@
-import {SVG_NS, KEYS} from '../settings';
+import {
+    SVG_NS,
+    KEYS
+} from '../settings';
 
 import Board from './Board';
 import Paddle from './Paddle';
@@ -44,40 +47,40 @@ export default class Game {
             this.height
         );
         this.score1 = new Score(
-            this.width/ 2-50, 30, 30);
+            this.width / 2 - 50, 30, 30);
 
         this.score2 = new Score(
-        this.width/ 2+50, 30, 30);
+            this.width / 2 + 50, 30, 30);
 
         this.ball2 = new Ball(
-          8,
-          this.width,
-          this.height,
-          'lightblue'
+            8,
+            this.width,
+            this.height,
+            'lightblue'
         );
 
 
         document.addEventListener('keydown', event => {
             switch (event.keyCode) {
                 case KEYS.spaceBar:
-                    this.pause =!this.pause;
-										break;
-                    case KEYS.v:
-					this.ball2 = new Ball(BALL.radius, this.width, this.height, 'lightblue');
-					break;
+                    this.pause = !this.pause;
+                    break;
+                case KEYS.v:
+                    this.ball2 = new Ball(BALL.radius, this.width, this.height, 'lightblue');
+                    break;
             }
         });
         //id of a thing we want to append this game to and width and height is the size of vp and vb of our game
     }
-		// space() {
-		//   this.space = Math.max(0, this.y-this.);
-		// }
+    // space() {
+    //   this.space = Math.max(0, this.y-this.);
+    // }
 
     render() {
 
-				if(this.pause) {
-					return;
-				}
+        if (this.pause) {
+            return;
+        }
 
         this.gameElement.innerHTML = '';
 

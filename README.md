@@ -27,6 +27,9 @@ A basic pong game using SVGs, Javascript ES6 syntax and Webpack as a build tool 
 **Pause:**
 * spacebar: pause game
 
+## Stretch Goals
+* Triggered multiple balls at once
+
 ## Technology Used
 * ATOM Text editor
 * HTML5 Audio sounds triggered on ball bounces
