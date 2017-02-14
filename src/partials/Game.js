@@ -56,7 +56,7 @@ export default class Game {
             8,
             this.width,
             this.height,
-            'lightblue'
+
         );
 
 
@@ -66,7 +66,7 @@ export default class Game {
                     this.pause = !this.pause;
                     break;
                 case KEYS.v:
-                    this.ball2 = new Ball(BALL.radius, this.width, this.height, 'lightblue');
+                    this.ball2 = new Ball(BALL.radius, this.width, this.height,);
                     break;
             }
         });

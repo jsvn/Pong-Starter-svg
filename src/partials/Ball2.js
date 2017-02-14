@@ -28,8 +28,8 @@ export default class Ball2 {
 
         let circle = document.createElementNS(SVG_NS, 'circle');
         circle.setAttributeNS(null, 'r', this.radius);
-        circle.setAttributeNS(null, 'stroke', 'yellow');
-        circle.setAttributeNS(null, 'fill', 'red');
+        circle.setAttributeNS(null, 'stroke', 'white');
+        circle.setAttributeNS(null, 'fill', 'white');
         circle.setAttributeNS(null, 'cx', this.x);
         circle.setAttributeNS(null, 'cy', this.y);
 
